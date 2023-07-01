@@ -13,4 +13,9 @@ resource "aws_instance" "instance_1" {
   tags = {
     Name = var.instance_name
   }
+
+  provisioner "local-exec" {
+    command = "echo the ip address of the server is ${self.private_ip}"
+    on_failure = continue
+  }
 }
